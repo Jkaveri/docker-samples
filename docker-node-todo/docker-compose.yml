@@ -1,0 +1,17 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - node-todo
+    depends_on:
+      - tododb
+  tododb:
+    image: mongo
+    networks:
+      - node-todo
+networks:
+ node-todo:
+    driver: bridge
